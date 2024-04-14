@@ -1,0 +1,49 @@
+﻿@using PersonalWebsite.Components.Terminal;
+
+<MudCard Style="margin-bottom:6rem;background: #222831; min-height: 50rem; padding: 1rem;">
+    <TerminalButtons/>
+    @if(!welcomeScreen)
+    {
+        <WelcomeScreen/>
+    }
+    @foreach(var output in outputs)
+    {
+        <div style="display:flex; font-size: 1.5rem">
+            <label style="padding-top: 0.35%" for='name'><Prompt/></label>
+            <pre style="margin-left: 0;">@output</pre>
+        </div>
+    }
+    <div style="display: flex; font-size: 1.5rem;">
+        <label style="padding-top: 0.35%" for='name'><Prompt/></label>
+        <input type='text' id='name' @bind="input" @onkeyup="HandleKeyDown"  />
+    </div>
+
+</MudCard>
+
+@code {
+    private IDictionary<string, ITerminalCommand> commands = new Dictionary<string, ITerminalCommand>();
+    private bool welcomeScreen = false;
+    private string input = "";
+    private List<string> outputs = new List<string>();
+
+    private void HandleKeyDown(KeyboardEventArgs e)
+    {
+        if(e.Key == "Enter")
+        {
+            if(input == "clear")
+            {
+                outputs.Clear();
+                welcomeScreen = true;
+                input = "";
+                return;
+            } else if(input == "welcome")
+            {
+                welcomeScreen = false;
+            }
+
+            outputs.Add($" {input}");
+            input = "";
+        }
+    }
+}
+
