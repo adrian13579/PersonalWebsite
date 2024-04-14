@@ -1,0 +1,20 @@
+﻿@implements ITerminalCommand
+
+@code {
+
+    public string Name => "ls";
+
+    public void Execute(string[] args) { }
+
+    public RenderFragment Render() => 
+    @<div>
+        <div>
+            <h3>ls</h3>
+        </div>
+        <div>
+            <p>Lists all files and directories in the current directory.</p>
+        </div>
+        <h4>Usage</h4>
+        <p><code>ls</code></p>
+    </div>;
+}

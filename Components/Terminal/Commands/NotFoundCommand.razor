@@ -1,0 +1,10 @@
+﻿@implements ITerminalCommand
+
+@code {
+
+    public string Name => "not-found";
+
+    public void Execute(string[] args) { }
+
+    public RenderFragment Render() => @<p><span style="color: red;">Error:</span> Command not found</p>;
+}
