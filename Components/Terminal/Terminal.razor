@@ -17,7 +17,7 @@
     </div>
     <div style="display: flex; font-size: 1.5rem;">
         <div style="padding-top: 0.35%"><Prompt/></div>
-        <input type='text' id='name' @bind="input" @onkeyup="HandleKeyDown"  />
+        <input autocomplete="off" autofocus="true" type='text' id='name' @bind="input" @onkeyup="HandleKeyDown"  />
     </div>
 </MudCard>
 
@@ -25,7 +25,7 @@
     [Inject]
     private Shell shell { get; set; }
 
-    private List<(string input, ITerminalCommand output)> results = new List<(string input, ITerminalCommand output)>(); 
+    private List<(string input, ITerminalCommand output)> results = new(); 
 
     private string input = "";
 
