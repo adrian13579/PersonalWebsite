@@ -21,7 +21,9 @@ jobs:
       # Publish the site
       - name: Publish
         run: dotnet publish PersonalWebsite.sln -c:Release -o:publish -p:GHPages=true
-
+      # changes the base-tag in index.html from '/' to 'PersonalWebsite' to match GitHub Pages repository subdirectory
+      - name: Change base-tag in index.html from / to BlazorGitHubPagesDemo
+        run: sed -i 's/<base href="\/" \/>/<base href="\/PersonalWebsite\/" \/>/g' release/wwwroot/index.html
       # Deploy the site
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
