@@ -20,14 +20,22 @@ jobs:
 
       # Publish the site
       - name: Publish
-        run: dotnet publish PersonalWebsite.sln -c:Release -o:publish -p:GHPages=true
+        run: dotnet publish PersonalWebsite.sln -c Release -o release --nologo
       # changes the base-tag in index.html from '/' to 'PersonalWebsite' to match GitHub Pages repository subdirectory
       - name: Change base-tag in index.html from / to PersonalWebsite
-        run: sed -i 's/<base href="\/" \/>/<base href="\/PersonalWebsite\/" \/>/g' index.html
+        run: sed -i 's/<base href="\/" \/>/<base href="\/PersonalWebsite\/" \/>/g' realease/wwwroot/index.html
+
+      # copy index.html to 404.html to serve the same file when a file is not found
+      - name: Copy index.html to 404.html
+        run: cp release/wwwroot/index.html release/wwwroot/404.html
+
+      # add .nojekyll file to tell GitHub pages to not treat this as a Jekyll project. (Allow files and folders starting with an underscore)
+      - name: Add .nojekyll file
+        run: touch release/wwwroot/.nojekyll
       # Deploy the site
       - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+        uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: publish/wwwroot
+          publish_dir: release/wwwroot
           force_orphan: true
