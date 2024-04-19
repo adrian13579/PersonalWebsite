@@ -1,6 +1,6 @@
 ﻿@inherits LayoutComponentBase
 
-<MudThemeProvider  Theme="CustomTheme"/>
+<MudThemeProvider @ref="@_mudThemeProvider" Theme="_customTheme" @bind-IsDarkMode="@_isDarkMode"/>
 <MudDialogProvider />
 <MudSnackbarProvider />
 
@@ -11,27 +11,52 @@
 </MudLayout>
 
 @code {
-    MudTheme CustomTheme = new MudTheme()
+
+    protected override async Task OnAfterRenderAsync(bool firstRender)
     {
-        Palette = new PaletteDark()
+        if (firstRender)
         {
-            // Background = "#FDF7E4",
-             TextPrimary = "#222831", 
-             Background = "#31363F",
-            Primary = "#222831",
-           // Primary = "#FAEED1",
+            _isDarkMode =   await _mudThemeProvider.GetSystemPreference();
+            await _mudThemeProvider.WatchSystemPreference(OnSystemPreferenceChanged);
+            StateHasChanged();
+        }
+    }
+
+    private Task OnSystemPreferenceChanged(bool newValue)
+    {
+        _isDarkMode = newValue;
+        StateHasChanged();
+        return Task.CompletedTask;
+    }    
+
+    private bool _isDarkMode = true;
+
+    private MudThemeProvider _mudThemeProvider;
+
+    private MudTheme _customTheme = new MudTheme()
+    {
+        Palette = new PaletteLight()
+        {
+            Background = "#EEEEEE",
+            PrimaryContrastText = "#222831", 
+            Primary = "#FFFFFF",
+            Secondary = "#0D47A1",
+            Tertiary = "#00BCD4",
         },
+
         PaletteDark = new PaletteDark()
         {
             Background = "#31363F",
-            TextPrimary = "#FFFFFF",
+            PrimaryContrastText = "#FFFFFF",
             Primary = "#222831",
+            Secondary = "#76FF03",
+            Tertiary = "#00BCD4",
         },
         Typography = new Typography()
         {
             Default = new Default() 
             { 
-                FontSize = "1.5rem",
+                FontSize = "30px",
                 FontFamily = new[] { "Consolas", "monaco", "monospace" },
             }
         }
