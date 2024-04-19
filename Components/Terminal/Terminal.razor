@@ -1,7 +1,6 @@
-﻿<MudCard Class="mud-elevation-4 py-8 px-10 rounded" Style="margin-bottom:5vh;background: #222831; min-height: 90vh; padding: 1rem;">
+﻿<MudCard  Class="mud-elevation-4 py-8 px-10 rounded-lg mud-theme-primary" Style="margin-bottom:5vh; min-height: 90vh;">
     <TerminalButtons/>
     <WelcomeScreen/>
-    <div style="font-size: 1.5rem; color: white;">
     @foreach(var result in results)
     {
         <div style="display: flex;">
@@ -14,10 +13,9 @@
         </div>
         @result.output.Render()
     }
-    </div>
-    <div style="display: flex; font-size: 1.5rem;">
+    <div style="display: flex;">
         <div style="padding-top: 0.35%"><Prompt/></div>
-        <input autocomplete="off" autofocus="true" type='text' id='name' @bind="input" @onkeyup="HandleKeyDown"  />
+        <input class="mud-theme-primary" autocomplete="off" autofocus="true" type='text' id='name' @bind="input" @onkeyup="HandleKeyDown"  />
     </div>
 </MudCard>
 

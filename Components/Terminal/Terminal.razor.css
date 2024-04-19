@@ -1,20 +1,11 @@
-﻿
-div {
-    font-family: 'Courier New', Courier, monospace;
-}
-
-div > pre {
-    color: white;
+﻿div > pre {
     overflow: hidden;
     margin-left: 20px;
     margin-right: 20px;
 }
 
 input {
-    border-color:  #222831;
-    background: #222831;
     width: 100%;
-    color: white;
     border: none;
     padding: 5px;
 }

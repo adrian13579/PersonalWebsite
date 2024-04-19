@@ -1,22 +1,39 @@
 ﻿@inherits LayoutComponentBase
 
-<MudThemeProvider />
+<MudThemeProvider  Theme="CustomTheme"/>
 <MudDialogProvider />
 <MudSnackbarProvider />
 
 <MudLayout>
-@*     <MudAppBar Color="Color.Transparent" Fixed="false" Elevation="0">
-        <MudButton Color="Color.Info" Href="/">Home</MudButton>
-        <MudButton Color="Color.Info">Projects</MudButton>
-        <MudButton Color="Color.Info">Blogs</MudButton>
-        <MudButton Color="Color.Info">About</MudButton>
-        <MudSpacer />
-        <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit"  Href="https://github.com/adrian13579"/>
-        <MudIconButton Icon="@Icons.Custom.Brands.LinkedIn" Color="Color.Inherit" Href="https://www.linkedin.com/in/adrian-portales-781807226/" />
-        <MudIconButton Icon="@Icons.Custom.Brands.X" Color="Color.Inherit" Href="https://twitter.com/adrianportales3" />
-    </MudAppBar> *@
-
     <MudMainContent>
         @Body
     </MudMainContent>
 </MudLayout>
+
+@code {
+    MudTheme CustomTheme = new MudTheme()
+    {
+        Palette = new PaletteDark()
+        {
+            // Background = "#FDF7E4",
+             TextPrimary = "#222831", 
+             Background = "#31363F",
+            Primary = "#222831",
+           // Primary = "#FAEED1",
+        },
+        PaletteDark = new PaletteDark()
+        {
+            Background = "#31363F",
+            TextPrimary = "#FFFFFF",
+            Primary = "#222831",
+        },
+        Typography = new Typography()
+        {
+            Default = new Default() 
+            { 
+                FontSize = "1.5rem",
+                FontFamily = new[] { "Consolas", "monaco", "monospace" },
+            }
+        }
+    };
+}

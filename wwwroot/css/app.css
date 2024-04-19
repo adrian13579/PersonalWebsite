@@ -31,20 +31,3 @@ h1:focus {
     .blazor-error-boundary::after {
         content: "An error has occurred."
     }
-
-@media screen and (max-width: 768px) {
-  /* Adjust font size and line height for smaller screens */
-  .ascii-art pre {
-    font-size: 0.8em;
-    line-height: 1.2em;
-  }
-}
-
-@media screen and (max-width: 480px) {
-  /* Further adjustments for even smaller screens */
-  .ascii-art pre {
-    font-size: 0.6em;
-    line-height: 1em;
-  }
-}
-
