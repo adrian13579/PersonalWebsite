@@ -12,6 +12,10 @@ namespace PersonalWebsite.Components.Terminal
         /// </summary>
         string Name { get; }
         /// <summary>
+        /// Description of the command
+        /// </summary>
+        string Description { get; }
+        /// <summary>
         /// Execute the command
         /// </summary>
         /// <param name="args"></param>
