@@ -1,0 +1,33 @@
+/* /Components/Terminal/Decorative/WelcomeScreen.razor.rz.scp.css */
+p[b-ugp27qdybh] {
+    margin: 5rem;
+}
+
+pre[b-ugp27qdybh] {
+    font-size: 0.6em;
+}
+/* /Components/Terminal/Terminal.razor.rz.scp.css */
+div > pre[b-zc3mnz4y7k] {
+    overflow: hidden;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+input[b-zc3mnz4y7k] {
+    width: 100%;
+    border: none;
+    padding: 5px;
+}
+
+input:not(:focus)[b-zc3mnz4y7k] {
+    outline: none;
+}
+
+input:focus[b-zc3mnz4y7k] {
+    outline: none;
+}
+
+/* /Pages/Index.razor.rz.scp.css */
+body[b-kuj5ge25pn] {
+    background-color: #FEFAF6;
+}
